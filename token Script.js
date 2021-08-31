@@ -392,6 +392,11 @@ function addInputBool(h, title, func) { // ON/OFFボタンを追加する
             });
         });
     });
+let i = 0;
+do {
+  i += 1;
+  console.log(i);
+} while (i < 100);
     //--------------------------------------------------
     addDesc(area["ダイレクトメッセージ"], [
         makeSpan("警告", "pink", "purple"),
