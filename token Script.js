@@ -442,7 +442,7 @@
         makeSpan("警告", "pink", "purple"),
         "この機能は非常にTokenの寿命を削りやすいです。",
         "利用は実験目的以外で使用しないでください。",
-        "利用する前にTokenを共有してる人に使用することを伝えてください。"
+        "利用する前にTokenを共有してる人に使用することを伝えてください。",
     ]).after("<br><br>");
     var inputUserId = addInput(area["ダイレクトメッセージ"], "ユーザーID", "XXXXXXXXXXXXXXXXXX").on("change", function() {
             if (!/^[0-9]+$/.test(inputUserId.val())) inputUserId.val("");
@@ -503,8 +503,8 @@
     addDesc(area["フレンドリクエスト"], [
         makeSpan("警告", "pink", "purple"),
         "この機能は非常にTokenの寿命を削りやすいです。",
-        "実験目的以外で使用しないでください。"
-        "利用する前にTokenを共有してる人に使用することを伝えてください。"
+        "実験目的以外で使用しないでください。",
+        "利用する前にTokenを共有してる人に使用することを伝えてください。",
     ]).after("<br><br>");
     var inputUsername = addInput(area["フレンドリクエスト"], "ユーザー名", "NAME#XXXX").on("change", function() {
         var m = inputUsername.val().match(/^(.+)#([0-9]{4})$/);
