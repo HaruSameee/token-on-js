@@ -318,7 +318,6 @@
         });
     });
     //--------------------------------------------------
-   
     addDesc(area["認証"], [
         "認証リアクションURLはリアクション形式の認証を突破するためのものです。",
         "認証に使用するリアクションの「Request URL」を入力してください。",
@@ -358,19 +357,6 @@
         });
     });
     //--------------------------------------------------
-function addInputBool(h, title, func) { // ON/OFFボタンを追加する
-        var flag = false,
-            e = addBtn(h, title),
-            check = $("<input>", {
-                type: "checkbox"
-            }).prependTo(e.on("click", function() {
-                flag = !flag;
-                check.prop("checked", flag);
-                e.css("background-color", flag ? "orange" : "gray");
-                if (typeof func === "function") func(flag);
-            }).css("background-color", "gray"));
-        return e;
-    };
     addDesc(area["発言"], makeSpan("「https://discord.com/channels/XXXXXXXXXXXXXXXXXX/XXXXXXXXXXXXXXXXXX」", "white") + "形式のチャンネルURLか、チャンネルのIDを入力してください。").after("<br><br>" + makeSpan("チャンネルID", "darkgray", "black", 2.5));
     var inputChannelId = addTextarea(area["発言"], "発言するチャンネルのIDを改行で区切って入力\n\n例:" + new Array(4).join("\nXXXXXXXXXXXXXXXXXX")).on("change", function() {
         inputChannelId.val(inputChannelId.val().split("\n").map(function(v) {
@@ -456,7 +442,7 @@ function addInputBool(h, title, func) { // ON/OFFボタンを追加する
         makeSpan("警告", "pink", "purple"),
         "この機能は非常にTokenの寿命を削りやすいです。",
         "利用は実験目的以外で使用しないでください。",
-        "利用する前にTokenを共有してる人に使用することを伝えてください。",
+        "利用する前にTokenを共有してる人に使用することを伝えてください。"
     ]).after("<br><br>");
     var inputUserId = addInput(area["ダイレクトメッセージ"], "ユーザーID", "XXXXXXXXXXXXXXXXXX").on("change", function() {
             if (!/^[0-9]+$/.test(inputUserId.val())) inputUserId.val("");
@@ -517,8 +503,8 @@ function addInputBool(h, title, func) { // ON/OFFボタンを追加する
     addDesc(area["フレンドリクエスト"], [
         makeSpan("警告", "pink", "purple"),
         "この機能は非常にTokenの寿命を削りやすいです。",
-        "実験目的以外で使用しないでください。",
-        "利用する前にTokenを共有してる人に使用することを伝えてください。",
+        "実験目的以外で使用しないでください。"
+        "利用する前にTokenを共有してる人に使用することを伝えてください。"
     ]).after("<br><br>");
     var inputUsername = addInput(area["フレンドリクエスト"], "ユーザー名", "NAME#XXXX").on("change", function() {
         var m = inputUsername.val().match(/^(.+)#([0-9]{4})$/);
