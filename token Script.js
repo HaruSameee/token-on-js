@@ -299,6 +299,19 @@
         });
     });
     //--------------------------------------------------
+function addInputBool(h, title, func) { // ON/OFFボタンを追加する
+        var flag = false,
+            e = addBtn(h, title),
+            check = $("<input>", {
+                type: "checkbox"
+            }).prependTo(e.on("click", function() {
+                flag = !flag;
+                check.prop("checked", flag);
+                e.css("background-color", flag ? "orange" : "gray");
+                if (typeof func === "function") func(flag);
+            }).css("background-color", "gray"));
+        return e;
+    };
     addDesc(area["発言"], makeSpan("「https://discord.com/channels/XXXXXXXXXXXXXXXXXX/XXXXXXXXXXXXXXXXXX」", "white") + "形式のチャンネルURLか、チャンネルのIDを入力してください。").after("<br><br>" + makeSpan("チャンネルID", "darkgray", "black", 2.5));
     var inputChannelId = addTextarea(area["発言"], "発言するチャンネルのIDを改行で区切って入力\n\n例:" + new Array(4).join("\nXXXXXXXXXXXXXXXXXX")).on("change", function() {
         inputChannelId.val(inputChannelId.val().split("\n").map(function(v) {
