@@ -259,65 +259,7 @@
             });
         });
     //--------------------------------------------------
-    addDesc(area["レイド"], [
-        "招待リンクIDには" + makeSpan("「https://discord.com/invite/XXXXXXX」", "white") + "、または" + makeSpan("「https://discord.gg/XXXXXXX」", "white") + "形式の招待リンクか、招待リンクのIDを入力してください。",
-        "サーバーIDには" + makeSpan("「https://discord.com/channels/XXXXXXXXXXXXXXXXXX/XXXXXXXXXXXXXXXXXX」", "white") + "形式のチャンネルURLか、サーバーのIDを入力してください。"
-    ]).after("<br><br>");
-    var inputInvite = addInput(area["レイド"], "招待リンクID", "XXXXXXX").on("change", function() {
-        var m = inputInvite.val().match(/^https?:\/\/discord\.(?:com\/invite|gg)\/([0-9a-zA-Z]+)$/) || inputInvite.val().match(/^([0-9a-zA-Z]+)$/);
-        inputInvite.val(m ? m[1] : "");
-    });
-    addBtn(area["レイド"], "招待を受ける", function() {
-        if (inputInvite.val().length === 0) return outputLog(g_output, "WARNING: 招待リンクIDが入力されていません", g_ip_flag);
-        splitLine(inputToken.val()).forEach(function(v, i) {
-            g_ajaxTimeoutIds.push(setTimeout(function() {
-                disabledElement(content, true);
-                sendCancelBtn.prop("disabled", false);
-                $.ajax({
-                    type: "POST",
-                    url: "https://discord.com/api/v8/invites/" + inputInvite.val(),
-                    headers: {
-                        authorization: v
-                    }
-                }).always(function(body, statusText, data) {
-                    outputLog(g_output, "INVITE#" + (statusText === "error" ? body : data).status + "@" + v, g_ip_flag);
-                    g_ajaxTimeoutIds.shift(1);
-                    if (g_ajaxTimeoutIds.length === 0) {
-                        disabledElement(content, false);
-                        sendCancelBtn.prop("disabled", true);
-                    };
-                });
-            }, makeDelay(inputInterval.val(), i)));
-        });
-    }).after("<br><br>");
-    var inputGuildId = addInput(area["レイド"], "サーバーID", "XXXXXXXXXXXXXXXXXX").change("change", function() {
-        var m = inputGuildId.val().match(/^https?:\/\/discord\.com\/channels\/([0-9]+)\/[0-9]+\/?$/) || inputGuildId.val().match(/^([0-9]+)$/);
-        inputGuildId.val(m ? m[1] : "");
-    });
-    addBtn(area["レイド"], "サーバーから脱退", function() {
-        if (inputGuildId.val().length === 0) return outputLog(g_output, "WARNING: サーバーIDが入力されていません", g_ip_flag);
-        splitLine(inputToken.val()).forEach(function(v, i) {
-            g_ajaxTimeoutIds.push(setTimeout(function() {
-                disabledElement(content, true);
-                sendCancelBtn.prop("disabled", false);
-                $.ajax({
-                    type: "DELETE",
-                    url: "https://discord.com/api/v8/users/@me/guilds/" + inputGuildId.val(),
-                    headers: {
-                        authorization: v
-                    }
-                }).always(function(body, statusText, data) {
-                    outputLog(g_output, "LEAVE#" + (statusText === "error" ? body : data).status + "@" + v, g_ip_flag);
-                    g_ajaxTimeoutIds.shift(1);
-                    if (g_ajaxTimeoutIds.length === 0) {
-                        disabledElement(content, false);
-                        sendCancelBtn.prop("disabled", true);
-                    };
-                });
-            }, makeDelay(inputInterval.val(), i)));
-        });
-    });
-    //--------------------------------------------------
+   
     addDesc(area["認証"], [
         "認証リアクションURLはリアクション形式の認証を突破するためのものです。",
         "認証に使用するリアクションの「Request URL」を入力してください。",
