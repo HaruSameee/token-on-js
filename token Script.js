@@ -29,7 +29,7 @@
     };
 
     function initInterval(num) { // リクエスト送信間隔を初期化する
-        return (!isFinite(num) || isNaN(num) || num < 0.01) ? 0.01 : num;
+        return (!isFinite(num) || isNaN(num) || num < 0.5) ? 0.5 : num;
     };
 
     function makeDelay(delay, i, o, len) { // 遅延を計算する
@@ -214,7 +214,7 @@
                     sendCancelBtn.prop("disabled", false);
                     $.ajax({
                         type: "PATCH",
-                        url: "https://discord.com/api/v8/users/@me/settings",
+                        url: "https://discord.com/api/v9/users/@me/settings",
                         headers: {
                             authorization: v,
                             "content-type": "application/json"
