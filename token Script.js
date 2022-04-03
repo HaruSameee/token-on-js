@@ -28,7 +28,13 @@
         });
     };
 
+    function initInterval(num) { // リクエスト送信間隔を初期化する
+        return (!isFinite(num) || isNaN(num) || num < 0.01) ? 0.01 : num;
+    };
 
+    function makeDelay(delay, i, o, len) { // 遅延を計算する
+        return (i + (o === undefined ? 0 : o) * (len === undefined ? 0 : len)) * initInterval(Number(delay)) * 1000;
+    };
 
     function disabledElement(elm, bool) { // 子孫要素のdisabled属性を設定する
         return elm.find("*").each(function(i, e) {
