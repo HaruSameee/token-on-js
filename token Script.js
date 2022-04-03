@@ -28,9 +28,6 @@
         });
     };
 
-    function initInterval(num) { // リクエスト送信間隔を初期化する
-        return (!isFinite(num) || isNaN(num) || num < 0.5) ? 0.5 : num;
-    };
 
     function makeDelay(delay, i, o, len) { // 遅延を計算する
         return (i + (o === undefined ? 0 : o) * (len === undefined ? 0 : len)) * initInterval(Number(delay)) * 1000;
@@ -148,9 +145,9 @@
     });
     addDesc(h, [
         makeSpan($("title").text() + " " + makeSpan("Ver.2.1.1", "gray", "skyblue; font-size: 12px; padding: 2.5px"), "darkgray", "purple; font-size: 16px; padding: 2.5px"),
-        "最終更新: 2022 04 03",
+        "このつーるは色々な文字と混じったtokenを抽出するつーるだよ、checker機能もあるよ",
         "",
-        "作成者 ---",
+        "作成 はるさめ",
         
     ]);
     //--------------------------------------------------
